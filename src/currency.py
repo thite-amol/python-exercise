@@ -31,6 +31,7 @@ class Currency:
         data_url = self.domain + f"EXR/M.{source}.{target}.SP00.A?detail=dataonly"
         r = requests.get(data_url)
 
+        # @TODO exception handling with test cases
         data = None
         if r.status_code == 200:
             data = self.parse_xml(r.content)
@@ -117,6 +118,7 @@ class Currency:
             dictionary with  TIME_PERIOD and OBS_VALUE index
         """
 
+        # @TODO exception handling with test cases
         xtree = etree.XML(xml_data)
 
         obs_dimension = xtree.xpath(
